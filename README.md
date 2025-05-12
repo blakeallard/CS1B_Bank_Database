@@ -30,14 +30,6 @@ Object-oriented design with inheritance and abstract base classes.
 File I/O
 Text-based storage of user credentials and balances.
 
-📁 BankSystem
-├── main.cpp           // Program entry point and UI logic
-├── Account.h/.cpp     // Abstract base class for accounts
-├── Savings.h/.cpp     // Savings account implementation
-├── Checkings.h/.cpp   // Checkings account implementation
-├── Passwords.txt      // Stores usernames and passwords
-├── Balances.txt       // Stores account balances and transaction counts
-
 📌 Example Use Cases
 A user logs in and deposits $1000 into their savings account.
 
