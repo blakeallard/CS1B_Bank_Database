@@ -3,7 +3,7 @@ project(HW11c)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(HW11c main.cpp Passwords.txt
+add_executable(HW11c main.cpp Passwords.txt Balances.txt
         Account.cpp
         Account.h
         Savings.cpp

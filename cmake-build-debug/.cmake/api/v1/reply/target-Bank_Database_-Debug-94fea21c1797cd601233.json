@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "HW11c.exe"
+			"path" : "Bank_Database_.exe"
 		},
 		{
-			"path" : "HW11c.pdb"
+			"path" : "Bank_Database_.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -53,13 +53,13 @@
 			"sourceIndexes" : 
 			[
 				0,
-				2,
-				4,
-				6
+				3,
+				5,
+				7
 			]
 		}
 	],
-	"id" : "HW11c::@6890427a1f51a3e7e1df",
+	"id" : "Bank_Database_::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -79,8 +79,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "HW11c",
-	"nameOnDisk" : "HW11c.exe",
+	"name" : "Bank_Database_",
+	"nameOnDisk" : "Bank_Database_.exe",
 	"paths" : 
 	{
 		"build" : ".",
@@ -93,25 +93,26 @@
 			"sourceIndexes" : 
 			[
 				0,
-				2,
-				4,
-				6
+				3,
+				5,
+				7
 			]
 		},
 		{
 			"name" : "",
 			"sourceIndexes" : 
 			[
-				1
+				1,
+				2
 			]
 		},
 		{
 			"name" : "Header Files",
 			"sourceIndexes" : 
 			[
-				3,
-				5,
-				7
+				4,
+				6,
+				8
 			]
 		}
 	],
@@ -126,6 +127,11 @@
 		{
 			"backtrace" : 1,
 			"path" : "Passwords.txt",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Balances.txt",
 			"sourceGroupIndex" : 1
 		},
 		{

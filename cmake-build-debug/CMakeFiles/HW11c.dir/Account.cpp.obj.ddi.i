@@ -1,19 +1,17 @@
-# 0 "C:/Users/ekalb/CLionProjects/Bank Database/Account.cpp"
-# 1 "C:\\Users\\ekalb\\CLionProjects\\Bank Database\\cmake-build-debug//"
+# 0 "C:/Users/ekalb/CLionProjects/ECBank_Database/Account.cpp"
+# 1 "C:\\Users\\ekalb\\CLionProjects\\ECBank_Database\\cmake-build-debug//"
 # 0 "<built-in>"
 # 0 "<command-line>"
-# 1 "C:/Users/ekalb/CLionProjects/Bank Database/Account.cpp"
-
-
-
-
-# 1 "C:/Users/ekalb/CLionProjects/Bank Database/Account.h" 1
+# 1 "C:/Users/ekalb/CLionProjects/ECBank_Database/Account.cpp"
 
 
 
 
 
 
+
+# 1 "C:/Users/ekalb/CLionProjects/ECBank_Database/Account.h" 1
+# 18 "C:/Users/ekalb/CLionProjects/ECBank_Database/Account.h"
 # 1 "C:/msys64/ucrt64/include/c++/14.2.0/iostream" 1 3
 # 36 "C:/msys64/ucrt64/include/c++/14.2.0/iostream" 3
        
@@ -42499,7 +42497,7 @@ namespace std
 # 85 "C:/msys64/ucrt64/include/c++/14.2.0/iostream" 3
 
 }
-# 8 "C:/Users/ekalb/CLionProjects/Bank Database/Account.h" 2
+# 19 "C:/Users/ekalb/CLionProjects/ECBank_Database/Account.h" 2
 # 1 "C:/msys64/ucrt64/include/c++/14.2.0/iomanip" 1 3
 # 36 "C:/msys64/ucrt64/include/c++/14.2.0/iomanip" 3
        
@@ -48530,7 +48528,7 @@ namespace std
 
 
 }
-# 9 "C:/Users/ekalb/CLionProjects/Bank Database/Account.h" 2
+# 20 "C:/Users/ekalb/CLionProjects/ECBank_Database/Account.h" 2
 
 # 1 "C:/msys64/ucrt64/include/c++/14.2.0/fstream" 1 3
 # 36 "C:/msys64/ucrt64/include/c++/14.2.0/fstream" 3
@@ -50562,11 +50560,12 @@ namespace std
 
 }
 # 1361 "C:/msys64/ucrt64/include/c++/14.2.0/fstream" 2 3
-# 11 "C:/Users/ekalb/CLionProjects/Bank Database/Account.h" 2
+# 22 "C:/Users/ekalb/CLionProjects/ECBank_Database/Account.h" 2
 
 
-# 12 "C:/Users/ekalb/CLionProjects/Bank Database/Account.h"
+# 23 "C:/Users/ekalb/CLionProjects/ECBank_Database/Account.h"
 using namespace std;
+
 
 
 
@@ -50574,18 +50573,48 @@ using namespace std;
 class Account
 {
 public:
+    int transCount;
+
+
+
+
+
+
     Account();
 
-    virtual void Deposit(double amount) = 0;
-    virtual bool Withdrawal(double amount) = 0;
+    int IncrementTransCount();
+
+
+
+
+
+
+
+    virtual void Deposit(double amount, bool silent) = 0;
+# 58 "C:/Users/ekalb/CLionProjects/ECBank_Database/Account.h"
+    virtual bool Withdrawal(double amount, bool silent) = 0;
+
+
+
+
+
+
     virtual void DisplayBalance() = 0;
 };
-# 6 "C:/Users/ekalb/CLionProjects/Bank Database/Account.cpp" 2
+# 9 "C:/Users/ekalb/CLionProjects/ECBank_Database/Account.cpp" 2
 
-Account::Account(){}
 
-void Account::Deposit(double amount){}
 
-bool Account::Withdrawal(double amount){return true;}
 
-void Account::DisplayBalance(){}
+
+
+
+Account::Account()
+{
+    transCount = 0;
+}
+
+int Account::IncrementTransCount()
+{
+    return transCount++;
+}

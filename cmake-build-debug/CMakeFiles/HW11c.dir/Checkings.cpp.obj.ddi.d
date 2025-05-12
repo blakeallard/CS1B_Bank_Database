@@ -1,7 +1,7 @@
 CMakeFiles\HW11c.dir\Checkings.cpp.obj.ddi: \
- C:/Users/ekalb/CLionProjects/Bank\ Database/Checkings.cpp \
- C:/Users/ekalb/CLionProjects/Bank\ Database/Checkings.h \
- C:/Users/ekalb/CLionProjects/Bank\ Database/Account.h \
+ C:/Users/ekalb/CLionProjects/ECBank_Database/Checkings.cpp \
+ C:/Users/ekalb/CLionProjects/ECBank_Database/Checkings.h \
+ C:/Users/ekalb/CLionProjects/ECBank_Database/Account.h \
  C:/msys64/ucrt64/include/c++/14.2.0/iostream \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/requires_hosted.h \
  C:/msys64/ucrt64/include/c++/14.2.0/x86_64-w64-mingw32/bits/c++config.h \

@@ -1,22 +1,13 @@
-# 0 "C:/Users/ekalb/CLionProjects/Bank Database/main.cpp"
-# 1 "C:\\Users\\ekalb\\CLionProjects\\Bank Database\\cmake-build-debug//"
+# 0 "C:/Users/ekalb/CLionProjects/ECBank_Database/main.cpp"
+# 1 "C:\\Users\\ekalb\\CLionProjects\\ECBank_Database\\cmake-build-debug//"
 # 0 "<built-in>"
 # 0 "<command-line>"
-# 1 "C:/Users/ekalb/CLionProjects/Bank Database/main.cpp"
-# 1 "C:/Users/ekalb/CLionProjects/Bank Database/Savings.h" 1
-
-
-
-
-
-
-# 1 "C:/Users/ekalb/CLionProjects/Bank Database/Account.h" 1
-
-
-
-
-
-
+# 1 "C:/Users/ekalb/CLionProjects/ECBank_Database/main.cpp"
+# 11 "C:/Users/ekalb/CLionProjects/ECBank_Database/main.cpp"
+# 1 "C:/Users/ekalb/CLionProjects/ECBank_Database/Savings.h" 1
+# 13 "C:/Users/ekalb/CLionProjects/ECBank_Database/Savings.h"
+# 1 "C:/Users/ekalb/CLionProjects/ECBank_Database/Account.h" 1
+# 18 "C:/Users/ekalb/CLionProjects/ECBank_Database/Account.h"
 # 1 "C:/msys64/ucrt64/include/c++/14.2.0/iostream" 1 3
 # 36 "C:/msys64/ucrt64/include/c++/14.2.0/iostream" 3
        
@@ -42502,7 +42493,7 @@ namespace std
 # 85 "C:/msys64/ucrt64/include/c++/14.2.0/iostream" 3
 
 }
-# 8 "C:/Users/ekalb/CLionProjects/Bank Database/Account.h" 2
+# 19 "C:/Users/ekalb/CLionProjects/ECBank_Database/Account.h" 2
 # 1 "C:/msys64/ucrt64/include/c++/14.2.0/iomanip" 1 3
 # 36 "C:/msys64/ucrt64/include/c++/14.2.0/iomanip" 3
        
@@ -48533,7 +48524,7 @@ namespace std
 
 
 }
-# 9 "C:/Users/ekalb/CLionProjects/Bank Database/Account.h" 2
+# 20 "C:/Users/ekalb/CLionProjects/ECBank_Database/Account.h" 2
 
 # 1 "C:/msys64/ucrt64/include/c++/14.2.0/fstream" 1 3
 # 36 "C:/msys64/ucrt64/include/c++/14.2.0/fstream" 3
@@ -50565,11 +50556,12 @@ namespace std
 
 }
 # 1361 "C:/msys64/ucrt64/include/c++/14.2.0/fstream" 2 3
-# 11 "C:/Users/ekalb/CLionProjects/Bank Database/Account.h" 2
+# 22 "C:/Users/ekalb/CLionProjects/ECBank_Database/Account.h" 2
 
 
-# 12 "C:/Users/ekalb/CLionProjects/Bank Database/Account.h"
+# 23 "C:/Users/ekalb/CLionProjects/ECBank_Database/Account.h"
 using namespace std;
+
 
 
 
@@ -50577,61 +50569,271 @@ using namespace std;
 class Account
 {
 public:
+    int transCount;
+
+
+
+
+
+
     Account();
 
-    virtual void Deposit(double amount) = 0;
-    virtual bool Withdrawal(double amount) = 0;
+    int IncrementTransCount();
+
+
+
+
+
+
+
+    virtual void Deposit(double amount, bool silent) = 0;
+# 58 "C:/Users/ekalb/CLionProjects/ECBank_Database/Account.h"
+    virtual bool Withdrawal(double amount, bool silent) = 0;
+
+
+
+
+
+
     virtual void DisplayBalance() = 0;
 };
-# 8 "C:/Users/ekalb/CLionProjects/Bank Database/Savings.h" 2
+# 14 "C:/Users/ekalb/CLionProjects/ECBank_Database/Savings.h" 2
+
+
+
 
 
 class Savings : public Account
 {
 private:
     double savingsBalance;
+    int idNum;
 
 public:
-    Savings();
 
-    void Deposit(double amount)override;
-    bool Withdrawal(double amount)override;
-    void DisplayBalance()override;
+
+
+
+
+
+    Savings(double startingBalance = 0.0);
+
+
+
+
+
+
+
+    void SetID(int IDFromFile);
+
+
+
+
+
+
+
+    int GetID();
+
+
+
+
+
+
+
+    void SetTransCount(int transCount);
+
+
+
+
+
+
+
+    int GetTransCount();
+
+
+
+
+
+
+
+    void PlusTransCount();
+
+
+
+
+
+
+
+    void SetBalance(double amount);
+
+
+
+
+
+
+
+    double GetBalance() const;
+# 97 "C:/Users/ekalb/CLionProjects/ECBank_Database/Savings.h"
+    void Deposit(double amount, bool silent) override;
+# 107 "C:/Users/ekalb/CLionProjects/ECBank_Database/Savings.h"
+    bool Withdrawal(double amount, bool silent) override;
+
+
+
+
+
+
+
+    void DisplayBalance() override;
 };
-# 2 "C:/Users/ekalb/CLionProjects/Bank Database/main.cpp" 2
-# 1 "C:/Users/ekalb/CLionProjects/Bank Database/Checkings.h" 1
-# 10 "C:/Users/ekalb/CLionProjects/Bank Database/Checkings.h"
+# 12 "C:/Users/ekalb/CLionProjects/ECBank_Database/main.cpp" 2
+# 1 "C:/Users/ekalb/CLionProjects/ECBank_Database/Checkings.h" 1
+# 20 "C:/Users/ekalb/CLionProjects/ECBank_Database/Checkings.h"
 class Checkings : public Account
 {
 private:
-    double checkingsBalance = 100.00;
+    double checkingsBalance;
+    int idNum;
 
 public:
+
+
+
+
+
+
     Checkings();
 
-    void Deposit(double amount)override;
-    bool Withdrawal(double amount)override;
-    void DisplayBalance()override;
-};
-# 3 "C:/Users/ekalb/CLionProjects/Bank Database/main.cpp" 2
 
+
+
+
+
+
+    void SetID(int IDFromFile);
+
+
+
+
+
+
+
+    int GetID();
+
+
+
+
+
+
+
+    void PlusID();
+
+
+
+
+
+
+
+    void SetTransCount(int transCount);
+
+
+
+
+
+
+
+    int GetTransCount();
+
+
+
+
+
+
+
+    void PlusTransCount();
+
+
+
+
+
+
+
+    void SetBalance(double amount);
+
+
+
+
+
+
+
+    double GetBalance();
+# 106 "C:/Users/ekalb/CLionProjects/ECBank_Database/Checkings.h"
+    void Deposit(double amount, bool silent) override;
+# 116 "C:/Users/ekalb/CLionProjects/ECBank_Database/Checkings.h"
+    bool Withdrawal(double amount, bool silent) override;
+
+
+
+
+
+
+
+    void DisplayBalance() override;
+};
+# 13 "C:/Users/ekalb/CLionProjects/ECBank_Database/main.cpp" 2
+# 21 "C:/Users/ekalb/CLionProjects/ECBank_Database/main.cpp"
 void BankMenu();
 void MainMenu();
-bool Login();
-bool Signup();
-
-
+bool Login(string &username);
+bool Signup(Checkings &checkings);
+bool LoadBalances(const string &username, Savings &savings, Checkings &checkings);
+bool SaveBalances(const string &username, Savings &savings, Checkings &checkings);
+string GetUsernameFromID(int id);
+bool FindUserID(int &idNum);
+bool TransferFunds(Savings &senderSavings, Checkings &senderCheckings, string &username);
+# 42 "C:/Users/ekalb/CLionProjects/ECBank_Database/main.cpp"
 int main()
 {
-    Savings savings;
-    Checkings checkings;
+
+    Savings savings{};
+
+
+    Checkings checkings{};
+
+
+
     int choice{};
+
+
     int secondChoice{};
+
+
     double depositAmt{};
+
+
     double withdrawalAmt{};
+
+
+    string username{};
+
+
+    string recipientUsername{};
+
+
+    int idNum{};
+
+
+    bool toSavings;
+
+
+    double amount;
+
+
+
 
     do
     {
+
         MainMenu();
         cin >> choice;
         cin.ignore();
@@ -50640,10 +50842,15 @@ int main()
         {
             case 1:
             {
-                if (Login() == true)
+                if (Login(username))
                 {
+                    if (!LoadBalances(username, savings, checkings))
+                    {
+                        cout << "No saved balances found.\n\n";
+                    }
                     do
                     {
+
                         BankMenu();
                         cin >> secondChoice;
                         cin.ignore();
@@ -50652,120 +50859,194 @@ int main()
                         {
                             case 1:
                             {
-                                cout << "Enter amount to deposit in your savings account: ";
-                                cin >> depositAmt;
-                                cin.ignore();
-                                savings.Deposit(depositAmt);
+                                do
+                                {
+                                    cout << "Enter amount to deposit in your savings account: ";
+                                    cin >> depositAmt;
+                                    cin.ignore();
+                                    if (depositAmt < 0)
+                                    {
+                                        cout << "ERROR! Please enter an amount greater than 0\n\n";
+                                    }
+                                } while (depositAmt < 0);
+
+                                checkings.PlusTransCount();
+                                savings.Deposit(depositAmt, false);
+                                SaveBalances(username, savings, checkings);
                                 break;
                             }
+
                             case 2:
                             {
-                                cout << "Enter amount to deposit in your checkings account: ";
-                                cin >> depositAmt;
-                                cin.ignore();
-                                checkings.Deposit(depositAmt);
+                                do
+                                {
+                                    cout << "Enter amount to deposit in your checkings account: ";
+                                    cin >> depositAmt;
+                                    cin.ignore();
+                                    if (depositAmt < 0)
+                                    {
+                                        cout << "ERROR! Please enter an amount greater than 0\n\n";
+                                    }
+                                } while (depositAmt < 0);
+
+                                checkings.PlusTransCount();
+                                checkings.Deposit(depositAmt, false);
+                                SaveBalances(username, savings, checkings);
                                 break;
                             }
+
+
                             case 3:
                             {
-                                cout << "Enter amount to withdrawal in your savings account: ";
-                                cin >> withdrawalAmt;
-                                cin.ignore();
-                                savings.Withdrawal(withdrawalAmt);
+                                do
+                                {
+                                    cout << "Enter amount to withdraw from your savings account: ";
+                                    cin >> withdrawalAmt;
+                                    cin.ignore();
+                                    if (withdrawalAmt < 0)
+                                    {
+                                        cout << "ERROR! Please enter an amount greater than 0\n\n";
+                                    }
+                                } while (withdrawalAmt < 0);
+
+                                checkings.PlusTransCount();
+                                savings.Withdrawal(withdrawalAmt, false);
+                                SaveBalances(username, savings, checkings);
                                 break;
                             }
+
+
                             case 4:
                             {
-                                cout << "Enter amount to withdrawal in your checkings account: ";
-                                cin >> withdrawalAmt;
-                                cin.ignore();
-                                checkings.Withdrawal(withdrawalAmt);
+                                do
+                                {
+                                    cout << "Enter amount to withdraw from your checkings account: ";
+                                    cin >> withdrawalAmt;
+                                    cin.ignore();
+                                    if (withdrawalAmt < 0)
+                                    {
+                                        cout << "ERROR! Please enter an amount greater than 0\n\n";
+                                    }
+                                } while (withdrawalAmt < 0);
+
+                                checkings.PlusTransCount();
+                                checkings.Withdrawal(withdrawalAmt, false);
+                                SaveBalances(username, savings, checkings);
                                 break;
                             }
+
                             case 5:
                             {
                                 savings.DisplayBalance();
                                 checkings.DisplayBalance();
                                 break;
                             }
+
                             case 6:
+                            {
+
+                                FindUserID(idNum);
+                                TransferFunds(savings, checkings, username);
+                                checkings.PlusTransCount();
+                                break;
+                            }
+
+                            case 7:
                             {
                                 cout << "Exiting Bank Menu...\n\n";
                                 break;
                             }
+
                             default:
-                            {
-                                cout << "ERROR! Please enter a valid option (1-6)\n\n";
-                            }
+                                cout << "ERROR! Please enter a valid option (1-7)\n\n";
+
                         }
-                    } while (secondChoice != 6);
+
+                    } while (secondChoice != 7);
+
                 }
+
                 break;
+
             }
+
             case 2:
-            {
-                Signup();
+                Signup(checkings);
                 break;
-            }
+
             case 3:
-            {
+                break;
+
+            case 4:
                 cout << "Exiting Program...\n\n";
                 break;
-            }
-            default: cout << "ERROR! Please enter a valid choice!\n\n";
-        }
-    } while (choice != 3);
 
+            default:
+                cout << "ERROR! Please enter a valid choice!\n\n";
+
+        }
+
+    } while (choice != 4);
 
     return 0;
 }
+
+
+
+
+
+
 
 void MainMenu()
 {
     cout << "******* MAIN MENU *******\n";
     cout << "1. Login\n";
     cout << "2. Signup\n";
-    cout << "3. Quit Program\n\n";
+    cout << "3. Find ID#\n";
+    cout << "4. Quit Program\n\n";
     cout << "Enter your choice: ";
 }
 
+
+
+
+
+
+
 void BankMenu()
 {
-    cout << "******* MAIN MENU *******\n";
+    cout << "******* BANK MENU *******\n";
     cout << "1. Savings Deposit\n";
     cout << "2. Checkings Deposit\n";
     cout << "3. Savings Withdrawal\n";
     cout << "4. Checkings Withdrawal\n";
     cout << "5. Display Account Balances\n";
-    cout << "6. Exit\n\n";
+    cout << "6. Transfer Funds To User Via ID#\n";
+    cout << "7. Exit\n\n";
     cout << "Enter your choice: ";
 }
-
-bool Login()
+# 283 "C:/Users/ekalb/CLionProjects/ECBank_Database/main.cpp"
+bool Login(string &username)
 {
-
-    string fileUsername{};
-    string filePassword{};
-    string inputUsername{};
+    string fileUsername;
+    string filePassword;
+    string inputUsername;
     string inputPassword;
-    string line{};
+    string line;
 
 
     ifstream fin("Passwords.txt");
 
-
-    cout << "Username :";
+    cout << "Username: ";
     getline(cin, inputUsername);
     cout << "Password: ";
     getline(cin, inputPassword);
-
 
     if (!fin)
     {
         cout << "ERROR! UNABLE TO OPEN FILE\n\n";
         return false;
     }
-
 
     while (getline(fin, line))
     {
@@ -50774,37 +51055,352 @@ bool Login()
 
         if (inputUsername == fileUsername && inputPassword == filePassword)
         {
+            username = inputUsername;
             cout << "Login Successful.\n\n";
             return true;
         }
     }
-
     fin.close();
-    cout << "Username or password does not exist!  Please signup.\n\n";
+    cout << "Username or password does not exist! Please signup.\n\n";
     return false;
 }
-
-bool Signup()
+# 329 "C:/Users/ekalb/CLionProjects/ECBank_Database/main.cpp"
+bool Signup(Checkings &checkings)
 {
-    string newUsername{};
-    string newPassword{};
-    ofstream fout("Passwords.txt", ios:: app);
+    string username;
+    string password;
+    string confirmPassword;
+    string fileUsername;
+    string line;
 
-    cout << "Choose a username: ";
-    getline(cin, newUsername);
 
-    cout << "Choose a password: ";
-    getline(cin, newPassword);
+    ifstream fin("Passwords.txt");
 
-    if (!fout)
+    cout << "Enter a new username: ";
+    getline(cin, username);
+
+
+    while (getline(fin, line))
     {
-        cout << "Error opening file.\n\n";
+        stringstream ss(line);
+        ss >> fileUsername;
+        if (fileUsername == username)
+        {
+            cout << "ERROR! Username already exists. Please try again.\n\n";
+            fin.close();
+            return false;
+        }
+    }
+
+    fin.close();
+
+
+    cout << "Enter a new password: ";
+    getline(cin, password);
+
+    cout << "Confirm your password: ";
+    getline(cin, confirmPassword);
+
+    if (password != confirmPassword)
+    {
+        cout << "ERROR! Passwords do not match. Please try again.\n\n";
         return false;
     }
 
-    fout << newUsername << " " << newPassword << endl;
-    fout.close();
-    cout << "Signup successfull!\n\n";
 
+    ofstream fout("Passwords.txt", ios::app);
+    if (!fout)
+    {
+        cout << "ERROR! Unable to open file for writing.\n\n";
+        return false;
+    }
+
+    fout << username << " " << password << endl;
+    fout.close();
+
+    cout << "Signup successful. You can now login.\n\n";
+    return true;
+}
+# 395 "C:/Users/ekalb/CLionProjects/ECBank_Database/main.cpp"
+bool LoadBalances(const string& username, Savings& savings, Checkings& checkings)
+{
+    ifstream fin("Balances.txt");
+    if (!fin)
+    {
+        return false;
+    }
+
+    string line;
+    string fileUser;
+    double savBal, checkBal;
+    int transNum;
+
+    while (getline(fin, line))
+    {
+        stringstream ss(line);
+        ss >> fileUser >> savBal >> checkBal >> transNum;
+
+        if (fileUser == username)
+        {
+            savings.SetBalance(savBal);
+            checkings.SetBalance(checkBal);
+            savings.SetTransCount(transNum);
+            checkings.SetTransCount(transNum);
+            fin.close();
+            return true;
+        }
+    }
+    fin.close();
+    return false;
+}
+# 436 "C:/Users/ekalb/CLionProjects/ECBank_Database/main.cpp"
+bool SaveBalances(const string& username, Savings& savings, Checkings& checkings)
+{
+    ifstream fin("Balances.txt");
+    ofstream fout("Balances_temp.txt");
+
+    if (!fin || !fout)
+    {
+        return false;
+    }
+
+    string line;
+    string fileUser;
+    double savBal, checkBal;
+    int transNum;
+    bool found = false;
+
+    while (getline(fin, line))
+    {
+        stringstream ss(line);
+        ss >> fileUser >> savBal >> checkBal >> transNum;
+
+        if (fileUser == username)
+        {
+            fout << username << " " << savings.GetBalance() << " "
+                 << checkings.GetBalance() << " "
+                 << max(savings.GetTransCount(), checkings.GetTransCount()) << endl;
+            found = true;
+        }
+        else
+        {
+            fout << line << endl;
+        }
+    }
+
+    fin.close();
+    fout.close();
+
+    if (!found)
+    {
+        return false;
+    }
+
+    remove("Balances.txt");
+    rename("Balances_temp.txt", "Balances.txt");
+    return true;
+}
+# 490 "C:/Users/ekalb/CLionProjects/ECBank_Database/main.cpp"
+bool FindUserID(int &idNum)
+{
+    ifstream fin("Passwords.txt");
+    string name{};
+    string password{};
+    int fileIdNum{};
+    string line{};
+
+    if (!fin)
+    {
+        cout << "ERROR! Failed to open ID records.\n\n";
+        return false;
+    }
+
+
+
+
+    while (getline(fin, line))
+    {
+        stringstream ss(line);
+        ss >> name >> password >> fileIdNum;
+
+
+        if (fileIdNum == idNum)
+        {
+            fin.close();
+            return true;
+        }
+    }
+
+    cout << "ID# " << idNum << " was not found.\nPlease enter a valid ID# to transfer funds to\n\n";
+    fin.close();
+    return false;
+}
+# 532 "C:/Users/ekalb/CLionProjects/ECBank_Database/main.cpp"
+string GetUsernameFromID(int id)
+{
+    ifstream fin("Passwords.txt");
+
+    string username, password;
+    int fileID;
+    string line;
+
+    if (!fin)
+    {
+        return "";
+    }
+
+    while (getline(fin, line))
+    {
+        stringstream ss(line);
+        ss >> username >> password >> fileID;
+
+        if (fileID == id)
+        {
+            fin.close();
+            return username;
+        }
+    }
+    fin.close();
+    return "";
+}
+# 569 "C:/Users/ekalb/CLionProjects/ECBank_Database/main.cpp"
+bool TransferFunds(Savings &senderSavings, Checkings &senderCheckings, string &username)
+{
+
+    int recipientID;
+    cout << "Enter ID# to transfer funds to: ";
+    cin >> recipientID;
+    cin.ignore();
+
+
+    string recipientUsername = GetUsernameFromID(recipientID);
+    if (recipientUsername.empty())
+    {
+        cout << "Transfer canceled - Invalid recipient ID.\n\n";
+        return false;
+    }
+
+
+    int sourceChoice;
+    cout << "\nTransfer from:\n"
+         << "1. Savings Account (Current balance: $" << senderSavings.GetBalance() << ")\n"
+         << "2. Checking Account (Current balance: $" << senderCheckings.GetBalance() << ")\n"
+         << "Enter choice (1-2): ";
+    cin >> sourceChoice;
+    cin.ignore();
+
+    if (sourceChoice != 1 && sourceChoice != 2)
+    {
+        cout << "Invalid source account selection. Transfer canceled.\n\n";
+        return false;
+    }
+
+
+    int destChoice;
+    cout << "\nTransfer to recipient's:\n"
+         << "1. Savings Account\n"
+         << "2. Checking Account\n"
+         << "Enter choice (1-2): ";
+    cin >> destChoice;
+    cin.ignore();
+
+    if (destChoice != 1 && destChoice != 2)
+    {
+        cout << "Invalid destination account selection. Transfer canceled.\n\n";
+        return false;
+    }
+
+
+    double transferAmount;
+    cout << "Enter amount to transfer: $";
+    cin >> transferAmount;
+    cin.ignore();
+
+    if (transferAmount <= 0)
+    {
+        cout << "Invalid amount. Transfer must be greater than $0.\n\n";
+        return false;
+    }
+
+
+    bool withdrawalSuccess;
+    if (sourceChoice == 1)
+    {
+        withdrawalSuccess = senderSavings.Withdrawal(transferAmount, true);
+    }
+    else
+    {
+        withdrawalSuccess = senderCheckings.Withdrawal(transferAmount, true);
+    }
+
+    if (!withdrawalSuccess)
+    {
+        return false;
+    }
+
+
+    if (!SaveBalances(username, senderSavings, senderCheckings))
+    {
+        cout << "Error saving sender's balances. Canceling transfer.\n\n";
+
+        if (sourceChoice == 1)
+        {
+            senderSavings.Deposit(transferAmount, true);
+        }
+        else
+        {
+            senderCheckings.Deposit(transferAmount, true);
+        }
+        return false;
+    }
+
+    Savings recipientSavings;
+    Checkings recipientCheckings;
+
+    if (!LoadBalances(recipientUsername, recipientSavings, recipientCheckings))
+    {
+        cout << "Error loading recipient's balances. Canceling transfer.\n\n";
+
+        if (sourceChoice == 1)
+        {
+            senderSavings.Deposit(transferAmount, true);
+        }
+        else
+        {
+            senderCheckings.Deposit(transferAmount, true);
+        }
+        SaveBalances(username, senderSavings, senderCheckings);
+        return false;
+    }
+
+
+    if (destChoice == 1)
+    {
+        recipientSavings.Deposit(transferAmount, true);
+    }
+    else
+    {
+        recipientCheckings.Deposit(transferAmount, true);
+    }
+
+
+    if (!SaveBalances(recipientUsername, recipientSavings, recipientCheckings))
+    {
+        cout << "Error saving recipient's balances. Canceling transfer.\n\n";
+
+        if (sourceChoice == 1)
+        {
+            senderSavings.Deposit(transferAmount, true);
+        }
+        else
+        {
+            senderCheckings.Deposit(transferAmount, true);
+        }
+        SaveBalances(username, senderSavings, senderCheckings);
+        return false;
+    }
+
+    cout << "Transfer successful! $" << transferAmount << " has been transferred to user ID "
+         << recipientID << ".\n\n";
     return true;
 }

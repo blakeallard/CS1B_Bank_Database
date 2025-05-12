@@ -27,7 +27,7 @@
 					[
 						0
 					],
-					"name" : "HW11c",
+					"name" : "Bank_Database_",
 					"targetIndexes" : 
 					[
 						0
@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "HW11c::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-HW11c-Debug-b55fddafaa8ae25996a7.json",
-					"name" : "HW11c",
+					"id" : "Bank_Database_::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Bank_Database_-Debug-94fea21c1797cd601233.json",
+					"name" : "Bank_Database_",
 					"projectIndex" : 0
 				}
 			]
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/ekalb/CLionProjects/Bank Database/cmake-build-debug",
-		"source" : "C:/Users/ekalb/CLionProjects/Bank Database"
+		"build" : "C:/Users/ekalb/CLionProjects/ECBank_Database/cmake-build-debug",
+		"source" : "C:/Users/ekalb/CLionProjects/ECBank_Database"
 	},
 	"version" : 
 	{

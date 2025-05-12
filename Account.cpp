@@ -1,13 +1,24 @@
-//
-// Created by Blake Allard on 5/2/2025.
-//
+// ***************************************************************************
+// AUTHOR: Blake Allard
+// FILENAME: Account.cpp
+// DATE: 5/2/2025
+// PURPOSE: Implements the Account class functions defined in Account.h
+// ***************************************************************************
 
 #include "Account.h"
 
-Account::Account(){}
+// ***************************************************************************
+// FUNCTION: Account (Constructor)
+// PURPOSE : Initializes the transaction count to 0 for the account
+// INPUT   : None (transaction count is set to 0 by default)
+// ***************************************************************************
 
-void Account::Deposit(double amount){}
+Account::Account()
+{
+    transCount = 0; // Initialize the transaction count to 0
+}
 
-bool Account::Withdrawal(double amount){return true;}
-
-void Account::DisplayBalance(){}
+int Account::IncrementTransCount()
+{
+    return transCount++;
+}

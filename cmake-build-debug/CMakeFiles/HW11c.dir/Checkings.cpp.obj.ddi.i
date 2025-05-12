@@ -1,26 +1,19 @@
-# 0 "C:/Users/ekalb/CLionProjects/Bank Database/Checkings.cpp"
-# 1 "C:\\Users\\ekalb\\CLionProjects\\Bank Database\\cmake-build-debug//"
+# 0 "C:/Users/ekalb/CLionProjects/ECBank_Database/Checkings.cpp"
+# 1 "C:\\Users\\ekalb\\CLionProjects\\ECBank_Database\\cmake-build-debug//"
 # 0 "<built-in>"
 # 0 "<command-line>"
-# 1 "C:/Users/ekalb/CLionProjects/Bank Database/Checkings.cpp"
-
-
-
-
-# 1 "C:/Users/ekalb/CLionProjects/Bank Database/Checkings.h" 1
+# 1 "C:/Users/ekalb/CLionProjects/ECBank_Database/Checkings.cpp"
 
 
 
 
 
 
-# 1 "C:/Users/ekalb/CLionProjects/Bank Database/Account.h" 1
 
-
-
-
-
-
+# 1 "C:/Users/ekalb/CLionProjects/ECBank_Database/Checkings.h" 1
+# 14 "C:/Users/ekalb/CLionProjects/ECBank_Database/Checkings.h"
+# 1 "C:/Users/ekalb/CLionProjects/ECBank_Database/Account.h" 1
+# 18 "C:/Users/ekalb/CLionProjects/ECBank_Database/Account.h"
 # 1 "C:/msys64/ucrt64/include/c++/14.2.0/iostream" 1 3
 # 36 "C:/msys64/ucrt64/include/c++/14.2.0/iostream" 3
        
@@ -42506,7 +42499,7 @@ namespace std
 # 85 "C:/msys64/ucrt64/include/c++/14.2.0/iostream" 3
 
 }
-# 8 "C:/Users/ekalb/CLionProjects/Bank Database/Account.h" 2
+# 19 "C:/Users/ekalb/CLionProjects/ECBank_Database/Account.h" 2
 # 1 "C:/msys64/ucrt64/include/c++/14.2.0/iomanip" 1 3
 # 36 "C:/msys64/ucrt64/include/c++/14.2.0/iomanip" 3
        
@@ -48537,7 +48530,7 @@ namespace std
 
 
 }
-# 9 "C:/Users/ekalb/CLionProjects/Bank Database/Account.h" 2
+# 20 "C:/Users/ekalb/CLionProjects/ECBank_Database/Account.h" 2
 
 # 1 "C:/msys64/ucrt64/include/c++/14.2.0/fstream" 1 3
 # 36 "C:/msys64/ucrt64/include/c++/14.2.0/fstream" 3
@@ -50569,11 +50562,12 @@ namespace std
 
 }
 # 1361 "C:/msys64/ucrt64/include/c++/14.2.0/fstream" 2 3
-# 11 "C:/Users/ekalb/CLionProjects/Bank Database/Account.h" 2
+# 22 "C:/Users/ekalb/CLionProjects/ECBank_Database/Account.h" 2
 
 
-# 12 "C:/Users/ekalb/CLionProjects/Bank Database/Account.h"
+# 23 "C:/Users/ekalb/CLionProjects/ECBank_Database/Account.h"
 using namespace std;
+
 
 
 
@@ -50581,63 +50575,303 @@ using namespace std;
 class Account
 {
 public:
+    int transCount;
+
+
+
+
+
+
     Account();
 
-    virtual void Deposit(double amount) = 0;
-    virtual bool Withdrawal(double amount) = 0;
+    int IncrementTransCount();
+
+
+
+
+
+
+
+    virtual void Deposit(double amount, bool silent) = 0;
+# 58 "C:/Users/ekalb/CLionProjects/ECBank_Database/Account.h"
+    virtual bool Withdrawal(double amount, bool silent) = 0;
+
+
+
+
+
+
     virtual void DisplayBalance() = 0;
 };
-# 8 "C:/Users/ekalb/CLionProjects/Bank Database/Checkings.h" 2
+# 15 "C:/Users/ekalb/CLionProjects/ECBank_Database/Checkings.h" 2
+
+
+
 
 
 class Checkings : public Account
 {
 private:
-    double checkingsBalance = 100.00;
+    double checkingsBalance;
+    int idNum;
 
 public:
+
+
+
+
+
+
     Checkings();
 
-    void Deposit(double amount)override;
-    bool Withdrawal(double amount)override;
-    void DisplayBalance()override;
+
+
+
+
+
+
+    void SetID(int IDFromFile);
+
+
+
+
+
+
+
+    int GetID();
+
+
+
+
+
+
+
+    void PlusID();
+
+
+
+
+
+
+
+    void SetTransCount(int transCount);
+
+
+
+
+
+
+
+    int GetTransCount();
+
+
+
+
+
+
+
+    void PlusTransCount();
+
+
+
+
+
+
+
+    void SetBalance(double amount);
+
+
+
+
+
+
+
+    double GetBalance();
+# 106 "C:/Users/ekalb/CLionProjects/ECBank_Database/Checkings.h"
+    void Deposit(double amount, bool silent) override;
+# 116 "C:/Users/ekalb/CLionProjects/ECBank_Database/Checkings.h"
+    bool Withdrawal(double amount, bool silent) override;
+
+
+
+
+
+
+
+    void DisplayBalance() override;
 };
-# 6 "C:/Users/ekalb/CLionProjects/Bank Database/Checkings.cpp" 2
+# 9 "C:/Users/ekalb/CLionProjects/ECBank_Database/Checkings.cpp" 2
+
+
+
+
+
+
 
 Checkings::Checkings()
 {
     checkingsBalance = 100.00;
 }
 
-void Checkings::Deposit(double amount)
+
+
+
+
+
+
+void Checkings::SetID(int IDFromFile)
+{
+    this->idNum = IDFromFile;
+}
+
+
+
+
+
+
+
+int Checkings::GetID()
+{
+    return idNum;
+}
+
+
+
+
+
+
+
+void Checkings::PlusID()
+{
+    idNum++;
+}
+
+
+
+
+
+
+
+void Checkings::SetTransCount(int transCount)
+{
+    this->transCount = transCount;
+}
+
+
+
+
+
+
+
+int Checkings::GetTransCount()
+{
+    return transCount;
+}
+
+
+
+
+
+
+
+void Checkings::PlusTransCount()
+{
+    transCount++;
+}
+
+
+
+
+
+
+
+void Checkings::SetBalance(double amount)
+{
+    checkingsBalance = amount;
+}
+
+
+
+
+
+
+
+double Checkings::GetBalance()
+{
+    return checkingsBalance;
+}
+# 116 "C:/Users/ekalb/CLionProjects/ECBank_Database/Checkings.cpp"
+void Checkings::Deposit(double amount, bool silent)
 {
     if (amount == 0)
     {
-        cout << "Amount must be more than 0.  Please try again.\n\n";
+        if (!silent)
+        {
+            cout << "Amount must be more than 0.  Please try again.\n\n";
+        }
     }
     else
     {
+        if (transCount >= 5)
+        {
+            checkingsBalance -= 0.10;
+            if (!silent)
+            {
+                cout << "A transaction fee of 10 cents has been applied.\n\n";
+                transCount++;
+            }
+        }
         checkingsBalance += amount;
-        cout << "$" << amount << " successfully deposited into your savings account.\n\n";
+        if (!silent)
+        {
+            cout << "$" << amount << " successfully deposited into your checkings account.\n\n";
+            transCount++;
+        }
     }
 }
-
-bool Checkings::Withdrawal(double amount)
+# 152 "C:/Users/ekalb/CLionProjects/ECBank_Database/Checkings.cpp"
+bool Checkings::Withdrawal(double amount, bool silent)
 {
     if (amount == 0)
     {
-        cout << "Amount must be more than 0.  Please try again.\n\n";
+        if (!silent)
+        {
+            cout << "Amount must be more than 0.  Please try again.\n\n";
+        }
         return false;
     }
     if (amount > checkingsBalance)
     {
-        cout << "Insufficient Funds! Please choose an amount equal to or less than $" << checkingsBalance << "\n\n";
+        if (!silent)
+        {
+            cout << "Insufficient Funds! Please choose an amount equal to or less than $"
+                 << checkingsBalance << "\n\n";
+        }
         return false;
     }
+    if (transCount >= 5)
+    {
+        amount += 0.10;
+        if (!silent)
+        {
+            cout << "A transaction fee of 10 cents has been applied.\n\n";
+            transCount++;
+        }
+    }
     checkingsBalance -= amount;
-    cout << "$" << amount << " successfully withdrawn from your savings account.\n\n";
+    if (!silent)
+    {
+        cout << "$" << amount << " successfully withdrawn from your checkings account.\n\n";
+        transCount++;
+    }
     return true;
 }
+
+
+
+
+
+
 
 void Checkings::DisplayBalance()
 {

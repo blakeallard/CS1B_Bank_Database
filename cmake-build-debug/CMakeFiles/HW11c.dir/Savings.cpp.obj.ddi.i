@@ -1,26 +1,13 @@
-# 0 "C:/Users/ekalb/CLionProjects/Bank Database/Savings.cpp"
-# 1 "C:\\Users\\ekalb\\CLionProjects\\Bank Database\\cmake-build-debug//"
+# 0 "C:/Users/ekalb/CLionProjects/ECBank_Database/Savings.cpp"
+# 1 "C:\\Users\\ekalb\\CLionProjects\\ECBank_Database\\cmake-build-debug//"
 # 0 "<built-in>"
 # 0 "<command-line>"
-# 1 "C:/Users/ekalb/CLionProjects/Bank Database/Savings.cpp"
-
-
-
-
-# 1 "C:/Users/ekalb/CLionProjects/Bank Database/Savings.h" 1
-
-
-
-
-
-
-# 1 "C:/Users/ekalb/CLionProjects/Bank Database/Account.h" 1
-
-
-
-
-
-
+# 1 "C:/Users/ekalb/CLionProjects/ECBank_Database/Savings.cpp"
+# 9 "C:/Users/ekalb/CLionProjects/ECBank_Database/Savings.cpp"
+# 1 "C:/Users/ekalb/CLionProjects/ECBank_Database/Savings.h" 1
+# 13 "C:/Users/ekalb/CLionProjects/ECBank_Database/Savings.h"
+# 1 "C:/Users/ekalb/CLionProjects/ECBank_Database/Account.h" 1
+# 18 "C:/Users/ekalb/CLionProjects/ECBank_Database/Account.h"
 # 1 "C:/msys64/ucrt64/include/c++/14.2.0/iostream" 1 3
 # 36 "C:/msys64/ucrt64/include/c++/14.2.0/iostream" 3
        
@@ -42506,7 +42493,7 @@ namespace std
 # 85 "C:/msys64/ucrt64/include/c++/14.2.0/iostream" 3
 
 }
-# 8 "C:/Users/ekalb/CLionProjects/Bank Database/Account.h" 2
+# 19 "C:/Users/ekalb/CLionProjects/ECBank_Database/Account.h" 2
 # 1 "C:/msys64/ucrt64/include/c++/14.2.0/iomanip" 1 3
 # 36 "C:/msys64/ucrt64/include/c++/14.2.0/iomanip" 3
        
@@ -48537,7 +48524,7 @@ namespace std
 
 
 }
-# 9 "C:/Users/ekalb/CLionProjects/Bank Database/Account.h" 2
+# 20 "C:/Users/ekalb/CLionProjects/ECBank_Database/Account.h" 2
 
 # 1 "C:/msys64/ucrt64/include/c++/14.2.0/fstream" 1 3
 # 36 "C:/msys64/ucrt64/include/c++/14.2.0/fstream" 3
@@ -50569,11 +50556,12 @@ namespace std
 
 }
 # 1361 "C:/msys64/ucrt64/include/c++/14.2.0/fstream" 2 3
-# 11 "C:/Users/ekalb/CLionProjects/Bank Database/Account.h" 2
+# 22 "C:/Users/ekalb/CLionProjects/ECBank_Database/Account.h" 2
 
 
-# 12 "C:/Users/ekalb/CLionProjects/Bank Database/Account.h"
+# 23 "C:/Users/ekalb/CLionProjects/ECBank_Database/Account.h"
 using namespace std;
+
 
 
 
@@ -50581,65 +50569,253 @@ using namespace std;
 class Account
 {
 public:
+    int transCount;
+
+
+
+
+
+
     Account();
 
-    virtual void Deposit(double amount) = 0;
-    virtual bool Withdrawal(double amount) = 0;
+    int IncrementTransCount();
+
+
+
+
+
+
+
+    virtual void Deposit(double amount, bool silent) = 0;
+# 58 "C:/Users/ekalb/CLionProjects/ECBank_Database/Account.h"
+    virtual bool Withdrawal(double amount, bool silent) = 0;
+
+
+
+
+
+
     virtual void DisplayBalance() = 0;
 };
-# 8 "C:/Users/ekalb/CLionProjects/Bank Database/Savings.h" 2
+# 14 "C:/Users/ekalb/CLionProjects/ECBank_Database/Savings.h" 2
+
+
+
 
 
 class Savings : public Account
 {
 private:
     double savingsBalance;
+    int idNum;
 
 public:
-    Savings();
 
-    void Deposit(double amount)override;
-    bool Withdrawal(double amount)override;
-    void DisplayBalance()override;
+
+
+
+
+
+    Savings(double startingBalance = 0.0);
+
+
+
+
+
+
+
+    void SetID(int IDFromFile);
+
+
+
+
+
+
+
+    int GetID();
+
+
+
+
+
+
+
+    void SetTransCount(int transCount);
+
+
+
+
+
+
+
+    int GetTransCount();
+
+
+
+
+
+
+
+    void PlusTransCount();
+
+
+
+
+
+
+
+    void SetBalance(double amount);
+
+
+
+
+
+
+
+    double GetBalance() const;
+# 97 "C:/Users/ekalb/CLionProjects/ECBank_Database/Savings.h"
+    void Deposit(double amount, bool silent) override;
+# 107 "C:/Users/ekalb/CLionProjects/ECBank_Database/Savings.h"
+    bool Withdrawal(double amount, bool silent) override;
+
+
+
+
+
+
+
+    void DisplayBalance() override;
 };
-# 6 "C:/Users/ekalb/CLionProjects/Bank Database/Savings.cpp" 2
+# 10 "C:/Users/ekalb/CLionProjects/ECBank_Database/Savings.cpp" 2
 
-Savings::Savings()
+
+
+
+
+
+
+Savings::Savings(double startingBalance)
 {
-    savingsBalance = 100.00;
+    savingsBalance = startingBalance;
+    idNum = 0;
+    transCount = 0;
 }
 
-void Savings::Deposit(double amount)
+
+
+
+
+
+
+void Savings::SetID(int IDFromFile)
 {
-    if (amount == 0)
+    idNum = IDFromFile;
+}
+
+
+
+
+
+
+
+int Savings::GetID()
+{
+    return idNum;
+}
+
+
+
+
+
+
+
+void Savings::SetTransCount(int transCount)
+{
+    this->transCount = transCount;
+}
+
+
+
+
+
+
+
+int Savings::GetTransCount()
+{
+    return transCount;
+}
+
+
+
+
+
+
+void Savings::PlusTransCount()
+{
+    transCount++;
+}
+
+
+
+
+
+
+
+void Savings::SetBalance(double newBalance)
+{
+    savingsBalance = newBalance;
+}
+
+
+
+
+
+
+
+double Savings::GetBalance() const
+{
+    return savingsBalance;
+}
+# 107 "C:/Users/ekalb/CLionProjects/ECBank_Database/Savings.cpp"
+void Savings::Deposit(double amount, bool silent)
+{
+    if (amount > 0)
     {
-        cout << "Amount must be more than 0.  Please try again.\n\n";
+        savingsBalance += amount;
+        if (!silent)
+        {
+            transCount++;
+            cout << "$" << amount << " successfully deposited into your savings account.\n\n";
+        }
     }
     else
     {
-        savingsBalance += amount;
-        cout << "$" << amount << " successfully deposited into your savings account.\n\n";
+        cout << "ERROR! Please enter a number greater than 0\n\n";
     }
+}
+# 132 "C:/Users/ekalb/CLionProjects/ECBank_Database/Savings.cpp"
+bool Savings::Withdrawal(double amount, bool silent)
+{
+    if (amount > 0 && savingsBalance >= amount)
+    {
+        savingsBalance -= amount;
+        if (!silent)
+        {
+            transCount++;
+            cout << "$" << amount << " successfully withdrawn from your savings account.\n\n";
+        }
+        return true;
+    }
+    return false;
 }
 
-bool Savings::Withdrawal(double amount)
-{
-    if (amount == 0)
-    {
-        cout << "Amount must be more than 0.  Please try again.\n\n";
-        return false;
-    }
-    if (amount > savingsBalance)
-    {
-        cout << "Insufficient Funds! Please choose an amount equal to or less than $" << savingsBalance << "\n\n";
-        return false;
-    }
-    savingsBalance -= amount;
-    cout << "$" << amount << " successfully withdrawn from your savings account.\n\n";
-    return true;
-}
+
+
+
+
+
 
 void Savings::DisplayBalance()
 {
-    cout << "Savings: $" << savingsBalance << "\n\n";
+    cout << "Savings Balance: $" << savingsBalance << endl;
 }
