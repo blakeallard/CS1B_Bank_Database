@@ -1,9 +1,0 @@
-ninja_dyndep_version = 1.0
-build CMakeFiles/HW11c.dir/main.cpp.obj: dyndep
-
-build CMakeFiles/HW11c.dir/Account.cpp.obj: dyndep
-
-build CMakeFiles/HW11c.dir/Savings.cpp.obj: dyndep
-
-build CMakeFiles/HW11c.dir/Checkings.cpp.obj: dyndep
-
